@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <menuitem
+        id="report_preview_root"
+        name="Report Preview"
+        
+    />
+    <menuitem
+        id="report_preview_menu"
+        name="Report Preview"
+        action="report_preview_action"
+        parent="report_preview_root"
+        sequence="10"/>
+</odoo>

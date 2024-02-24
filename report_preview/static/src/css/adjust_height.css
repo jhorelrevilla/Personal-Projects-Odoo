@@ -1,0 +1,8 @@
+.pruebita{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.pruebita>div{
+    width: 50%!important;
+}

@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="report_preview_view_form" model="ir.ui.view">
+        <field name="name">report.preview.view.form</field>
+        <field name="model">report.preview</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button string="Show Report" name="get_report" type="object"
+                        class="oe_highlight" accesskey="Q" />
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <span class="o_form_label">Report Name </span>
+                        <h1>
+                            <field name="name" />
+                        </h1>
+                    </div>
+                    <notebook>
+                        <page name="structure" string="Structure" accesskey="Q">
+                            <field name="report_content" widget="ace" options="{'mode': 'xml'}"
+                                class="" />
+                        </page>
+                        <page name="configuration" string="Configuration" accesskey="C">
+                            <group>
+                                <field name="paperformat_id">
+                                    <form>
+                                        <field name="page_height" />
+                                        <field name="page_width" />
+                                        <field name="orientation" />
+                                        <field name="margin_top" />
+                                        <field name="margin_bottom" />
+                                        <field name="margin_left" />
+                                        <field name="margin_right" />
+                                        <field name="header_spacing" />
+                                    </form>
+                                </field>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <!-- Attachment preview -->
+                <div class="o_attachment_preview" options="{'preview_priority_type': 'pdf'}" />
+                <!-- Chatter -->
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" modifiers="{}" />
+                    <field name="message_ids" />                    
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="report_preview_view_tree" model="ir.ui.view">
+        <field name="name">report.preview.view.tree</field>
+        <field name="model">report.preview</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="name" />
+            </tree>
+        </field>
+    </record>
+    <record id="report_preview_action" model="ir.actions.act_window">
+        <field name="name">Report Previsualization</field>
+        <field name="res_model">report.preview</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

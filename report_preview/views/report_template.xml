@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <template id="template_report_preview">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template> 
+
+    <record id="paperformat_report_preview" model="report.paperformat">
+        <field name="name">Preview Report Paperformat</field>
+        <field name="default" eval="True" />
+        <field name="format">custom</field>
+        <field name="page_height">297</field>
+        <field name="page_width">210</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">20</field>
+        <field name="margin_bottom">20</field>
+        <field name="margin_left">5</field>
+        <field name="margin_right">5</field>
+        <field name="header_line" eval="False" />
+        <field name="header_spacing">20</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <record id="action_report_report_preview" model="ir.actions.report">
+        <field name="name">Preview Report Action</field>
+        <field name="model">report.preview</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">report_preview.template_report_preview</field>
+        <field name="report_file">report_preview.template_report_preview</field>
+        <field name="print_report_name">'%s' % object.name</field>
+        <field name="binding_model_id" ref="report_preview.model_report_preview"/>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="paperformat_report_preview"/>
+    </record>
+</odoo>
